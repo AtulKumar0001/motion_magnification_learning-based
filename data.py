@@ -8,6 +8,7 @@ import torch
 import torch.nn.functional as F
 from torch.autograd import Variable
 from PIL import Image, ImageFile
+import sys
 
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
@@ -90,7 +91,7 @@ def get_paths_ABC(config, mode):
             dir_root = os.path.join(config.data_dir, val_vid)
         if not os.path.exists(dir_root):
             print('Cannot find data at {}.\nExiting the program...'.format(dir_root))
-            exit()
+            sys.exit()
     paths_A, paths_C, paths_skip_intermediate, paths_skip, paths_mag = [], [], [], [], []
     if config.cursor_end > 0 or 'test' in mode:
         dir_A = os.path.join(dir_root, 'frameA')
